@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Trade Code Finder",
+  "version": "1.0.0",
+  "description": "Search plumbing, electrical, HVAC & carpentry code PDFs fast, filtered by trade. Works fully offline.",
+  "action": {
+    "default_title": "Open Trade Code Finder"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "permissions": ["sidePanel", "storage", "clipboardWrite", "tabs", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

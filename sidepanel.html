@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trade Code Finder</title>
+  <link rel="stylesheet" href="sidepanel.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <span class="brand-mark">⌗</span>
+      <div>
+        <h1>Trade Code Finder</h1>
+        <p class="tagline">Search code PDFs by trade — offline</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- File loading -->
+  <section id="loadSection" class="load-section">
+    <div id="dropZone" class="drop-zone">
+      <input type="file" id="fileInput" accept="application/pdf,.pdf" multiple hidden />
+      <div class="drop-inner">
+        <div class="drop-icon">📄</div>
+        <p class="drop-title">Drop code PDFs here</p>
+        <p class="drop-sub">or <button type="button" id="browseBtn" class="link-btn">browse files</button></p>
+        <p class="drop-hint">Electrical, plumbing, HVAC, carpentry code books, spec sheets, permits…</p>
+      </div>
+    </div>
+    <button type="button" id="useTabPdfBtn" class="tab-pdf-btn">📎 Use PDF open in this tab</button>
+    <p class="tab-pdf-status" id="tabPdfStatus" hidden></p>
+    <ul id="fileList" class="file-list"></ul>
+  </section>
+
+  <!-- Trade filter chips -->
+  <section class="filters" id="filterSection">
+    <div class="chips" id="tradeChips"></div>
+  </section>
+
+  <!-- Search -->
+  <section class="search-section">
+    <div class="search-row">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Search a code, term, or question…" autocomplete="off" />
+      <button id="clearSearch" class="clear-btn" title="Clear" hidden>✕</button>
+    </div>
+    <p class="search-meta" id="searchMeta"></p>
+  </section>
+
+  <!-- Results -->
+  <main class="results" id="results">
+    <div class="empty-state" id="emptyState">
+      <div class="empty-icon">🧰</div>
+      <p class="empty-title">No PDFs loaded yet</p>
+      <p class="empty-sub">Load a code book above, pick a trade, and search. Everything stays on your device.</p>
+    </div>
+  </main>
+
+  <!-- Full-page viewer overlay -->
+  <div id="viewer" class="viewer" hidden>
+    <div class="viewer-bar">
+      <button id="viewerBack" class="icon-btn">‹ Back</button>
+      <span id="viewerTitle" class="viewer-title"></span>
+      <button id="viewerCite" class="icon-btn cite-btn" title="Copy citation for this page">⧉ Cite</button>
+      <div class="viewer-zoom">
+        <button id="zoomOutBtn" class="icon-btn zoom-btn" title="Zoom out (Ctrl/Cmd −)">－</button>
+        <button id="zoomIndicator" class="zoom-indicator" title="Reset zoom to fit width">100%</button>
+        <button id="zoomInBtn" class="icon-btn zoom-btn" title="Zoom in (Ctrl/Cmd +)">＋</button>
+      </div>
+      <div class="viewer-nav">
+        <button id="prevPage" class="icon-btn" title="Previous page">▲</button>
+        <span id="pageIndicator" class="page-indicator"></span>
+        <button id="nextPage" class="icon-btn" title="Next page">▼</button>
+      </div>
+    </div>
+    <div class="viewer-canvas-wrap" id="canvasWrap">
+      <div class="canvas-holder" id="canvasHolder">
+        <canvas id="pdfCanvas"></canvas>
+        <div id="highlightLayer" class="highlight-layer"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="loadingBar" class="loading-bar" hidden><div class="loading-fill"></div></div>
+
+  <script src="pdf.min.js"></script>
+  <script src="trades.js"></script>
+  <script src="sidepanel.js"></script>
+</body>
+</html>
